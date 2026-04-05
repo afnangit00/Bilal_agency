@@ -19,6 +19,7 @@ const projects = [
     year: "2025",
     layout: "col-span-2 md:col-span-1 h-[600px] md:-mt-20" // Staggered Effect
   },
+  
   {
     id: 3,
     title: "Elite Barber Studio",

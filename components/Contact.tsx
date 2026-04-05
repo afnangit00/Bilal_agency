@@ -4,8 +4,71 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, ArrowUpRight,  } from 'lucide-react';
 import { BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import Link from 'next/link';
+import { useState } from 'react';
+
+
+interface InputProps {
+  label: string;
+  placeholder: string;
+  type: string;
+  name: string;  // Add this line
+  // Add other props if needed, e.g., value, onChange
+}
 
 export default function Contact() {
+  const [status, setStatus] = useState('');
+  const [errors, setErrors] = useState({ name: '', email: '' });
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+      service: e.target.service.value,
+    };
+
+    // Validation
+    let hasErrors = false;
+    const newErrors = { name: '', email: '' };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      hasErrors = true;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      hasErrors = true;
+    }
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      hasErrors = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasErrors) {
+      setStatus('');
+      return;
+    }
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus("Message sent successfully!");
+      e.target.reset();
+      setErrors({ name: '', email: ''});
+    } else {
+      console.error("Error sending message.");
+      setStatus("Error sending message.");
+    }
+  }
   
   return (
     <section id='contact' className="min-h-screen bg-[#030303] text-white pt-32 pb-20 px-6 relative overflow-hidden">
@@ -30,18 +93,18 @@ export default function Contact() {
               Have a vision for your brand or tuition center? Reach out and let's create something extraordinary together.
             </p>
 
-            {/* Contact Details */}
+            {/* Contact Details
             <div className="space-y-8">
-              <ContactDetail icon={<Mail className="text-blue-500" />} label="Email Us" value="hello@bilal.studio" />
+              <ContactDetail icon={<Mail className="text-blue-500" />} label="Email Us" value="" />
               <ContactDetail icon={<Phone className="text-blue-500" />} label="Call Us" value="+91 98765 43210" />
               <ContactDetail icon={<MapPin className="text-blue-500" />} label="Our Studio" value="Malappuram, Kerala, India" />
-            </div>
+            </div> */}
 
             {/* Social Links */}
             <div className="flex gap-6 mt-16">
-              <SocialLink icon={<BsInstagram size={20} />} href="#" />
-              <SocialLink icon={<BsLinkedin size={20} />} href="#" />
-              <SocialLink icon={<BsTwitter size={20} />} href="#" />
+              <SocialLink icon={<BsInstagram size={20} />} href="https://www.instagram.com/_bilal.com_" />
+              <SocialLink icon={<BsLinkedin size={20} />} href="https://www.linkedin.com/in/afnan-lux-32397431b" />
+              <SocialLink icon={<BsTwitter size={20} />} href="https://x.com/afn4n_afi" />
             </div>
           </motion.div>
 
@@ -52,15 +115,15 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-white/3 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl"
           >
-            <form id='data' className="space-y-8">
+            <form onSubmit={handleSubmit} id='data' className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <InputField label="Your Name" placeholder="Afnan" type="text" />
-                <InputField label="Email Address" placeholder="hello@example.com" type="email" />
+                <InputField name="name" label="Your Name" placeholder="Afnan" type="text" error={errors.name} />
+                <InputField name="email" label="Email Address" placeholder="hello@example.com" type="email" error={errors.email} />
               </div>
               
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold ml-1">Service Required</label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none focus:border-blue-500/50 transition appearance-none text-gray-300">
+                <select name="service" className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none focus:border-blue-500/50 transition appearance-none text-gray-300">
                   <option className="bg-[#111]">Personal Brand Website</option>
                   <option className="bg-[#111]">Portfolio Website</option>
                   <option className="bg-[#111]">Tuition Platform</option>
@@ -75,6 +138,7 @@ export default function Contact() {
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold ml-1">Message</label>
                 <textarea 
+                  name='message'
                   rows={4} 
                   placeholder="Tell us about your project goals..." 
                   className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none focus:border-blue-500/50 transition resize-none placeholder:text-gray-700"
@@ -82,12 +146,15 @@ export default function Contact() {
               </div>
 
               <motion.button 
+                type='submit'
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] rounded-2xl flex items-center justify-center gap-3 hover:bg-blue-500 hover:text-white transition-all duration-500 shadow-xl"
               >
                 Send Inquiry <Send size={18} />
               </motion.button>
+              {status && <p className="mt-2 text-sm">{status}</p>}
+
             </form>
           </motion.div>
           
@@ -107,30 +174,32 @@ export default function Contact() {
 }
 
 
-// Helper Components
-function ContactDetail({ icon, label, value }: { icon: any, label: string, value: string }) {
-  return (
-    <div className="flex items-center gap-5 group">
-      <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:bg-blue-500/10 transition-colors">
-        {icon}
-      </div>
-      <div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{label}</p>
-        <p className="text-lg font-medium">{value}</p>
-      </div>
-    </div>
-  );
-}
+// // Helper Components
+// function ContactDetail({ icon, label, value }: { icon: any, label: string, value: string }) {
+//   return (
+//     <div className="flex items-center gap-5 group">
+//       <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:bg-blue-500/10 transition-colors">
+//         {icon}
+//       </div>
+//       <div>
+//         <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{label}</p>
+//         <p className="text-lg font-medium">{value}</p>
+//       </div>
+//     </div>
+//   );
+// }
 
-function InputField({ label, placeholder, type }: { label: string, placeholder: string, type: string }) {
+function InputField({ label, placeholder, type, name, error }: { label: string, placeholder: string, type: string, name: string, error?: string }) {
   return (
     <div className="space-y-2 flex flex-col">
       <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold ml-1">{label}</label>
       <input 
         type={type} 
         placeholder={placeholder} 
-        className="bg-white/5 border border-white/10 rounded-2xl p-4 outline-none focus:border-blue-500/50 transition placeholder:text-gray-700"
+        name={name}
+        className={`bg-white/5 border rounded-2xl p-4 outline-none focus:border-blue-500/50 transition placeholder:text-gray-700 ${error ? 'border-red-500' : 'border-white/10'}`}
       />
+      {error && <p className="text-red-500 text-sm ml-1">{error}</p>}
     </div>
   );
 }

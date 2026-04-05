@@ -56,3 +56,8 @@ A high-performance, modern landing page for a digital service agency.
 1. Clone the repo: `git clone [....]`
 2. Install dependencies: `npm install`
 3. Run the project: `npm run dev`
+
+
+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
+
+git remote set-url origin https://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@github.com/afnangit00/Bilal_agency.git
