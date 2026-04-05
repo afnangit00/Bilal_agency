@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="relative h-screen w-full bg-[#100f0f] text-white overflow-hidden flex flex-col justify-center items-center px-6">
+    <section id='home' className="relative h-screen w-full bg-[#100f0f] text-white overflow-hidden flex flex-col justify-center items-center px-6">
       
       {/* --- BACKGROUND ELEMENTS --- */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -93,7 +93,7 @@ export default function Home() {
         <span className="text-[10px] tracking-[1em] text-gray-700 uppercase font-bold">Minimalism is the ultimate sophistication</span>
       </div>
 
-    </main>
+    </section>
   );
 }
 

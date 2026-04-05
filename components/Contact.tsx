@@ -158,14 +158,19 @@ export default function Contact() {
             </form>
           </motion.div>
           
-          <Link href='/' className="justify-center flex gap-2 items-center">
+          <a
+          className="  justify-center flex gap-2 items-center"
+           onClick={() => {
+                 document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                 }}
+          >
       <div className="group h-10 w-10 md:h-10 md:w-10 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
       <ArrowUpRight size={25} className="group-hover:rotate-12 transition-transform"/>
       </div>
       <div className="flex flex-col justify-center items-start">
         <span className="text-lg font-bold">Back to home</span>
             </div>
-            </Link>
+            </a>
 
         </div>
       </div>

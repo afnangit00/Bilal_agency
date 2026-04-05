@@ -54,11 +54,14 @@ export default function Navbar() {
 
           {/* --- CTA BUTTON (Desktop) --- */}
           <div className="hidden md:block">
-            <Link href="#contact" className="px-6 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
+            <a
+            onClick={() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+            href="#contact" className="your-button-styles px-6 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
               Hire Us <ArrowUpRight size={14} className="group-hover:rotate-45 transition-transform" />
-            </Link>
+            </a>
           </div>
-
+              
           {/* --- MOBILE HAMBURGER --- */}
           <button 
             className="md:hidden text-white p-2"
