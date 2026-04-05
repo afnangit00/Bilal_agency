@@ -37,15 +37,18 @@ export default function Navbar() {
           </Link>
 
           {/* --- DESKTOP MENU --- */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className=" md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <Link 
+              <a
+               onClick={() => {
+               document.getElementById(link.href)?.scrollIntoView({ behavior: 'smooth' });
+              }}
                 key={link.name} 
                 href={link.href}
-                className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-colors hover:text-blue-400 ${pathname === link.href ? 'text-white' : 'text-gray-500'}`}
+                className={`your-button-styles text-[11px] uppercase tracking-[0.2em] font-bold transition-colors hover:text-blue-400 ${pathname === link.href ? 'text-white' : 'text-gray-500'}`}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
 

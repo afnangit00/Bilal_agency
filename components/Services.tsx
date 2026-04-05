@@ -97,12 +97,19 @@ export default function Services() {
                   </div>
                 </div>
 
-                <Link href="#contact" className="inline-flex items-center gap-4 text-sm font-black uppercase tracking-widest group/btn">
+                <a
+                 className="your-button-styles inline-flex items-center gap-4 text-sm font-black uppercase tracking-widest group/btn"
+                 onClick={() => {
+                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                 }}
+                 >
+                  
                   Launch Project 
                   <span className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-white group-hover/btn:text-black transition-all">
-                    <ArrowRight size={16} />
+                    <ArrowRight  size={16} />
                   </span>
-                </Link>
+                </a>
+
               </div>
             </motion.div>
           ))}
