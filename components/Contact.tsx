@@ -117,8 +117,8 @@ export default function Contact() {
           >
             <form onSubmit={handleSubmit} id='data' className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <InputField name="name" label="Your Name" placeholder="Afnan" type="text" error={errors.name} />
-                <InputField name="email" label="Email Address" placeholder="hello@example.com" type="email" error={errors.email} />
+                <InputField name="name" label="Your Name" placeholder="Enter your name" type="text" error={errors.name} />
+                <InputField name="email" label="Email Address" placeholder="Enter your email" type="email" error={errors.email} />
               </div>
               
               <div className="space-y-2">
@@ -130,8 +130,6 @@ export default function Contact() {
                   <option className="bg-[#111]">Business Landing Page</option>
                   <option className="bg-[#111]">E-commerse Business</option>
                   <option className="bg-[#111]">Marketing Business </option>
-                  
-                  
                 </select>
               </div>
 
@@ -154,10 +152,8 @@ export default function Contact() {
                 Send Inquiry <Send size={18} />
               </motion.button>
               {status && <p className="mt-2 text-sm">{status}</p>}
-
             </form>
           </motion.div>
-          
           <a
           className="  justify-center flex gap-2 items-center"
            onClick={() => {
