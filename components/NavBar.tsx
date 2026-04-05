@@ -89,13 +89,16 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link 
-              href="#contact"
-              onClick={() => setIsOpen(false)}
+            <a
+             onClick={() => {
+                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                 setIsOpen(false);
+                 }}
+              // onClick={() => setIsOpen(false)}
               className="mt-4 px-10 py-4 bg-blue-600 text-white font-bold rounded-full uppercase tracking-widest"
             >
               Start a Project
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
