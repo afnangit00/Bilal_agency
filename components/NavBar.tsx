@@ -37,31 +37,29 @@ export default function Navbar() {
           </Link>
 
           {/* --- DESKTOP MENU --- */}
-          <div className=" md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
-               onClick={() => {
-               document.getElementById(link.href)?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              <Link 
                 key={link.name} 
                 href={link.href}
-                className={`your-button-styles text-[11px] uppercase tracking-[0.2em] font-bold transition-colors hover:text-blue-400 ${pathname === link.href ? 'text-white' : 'text-gray-500'}`}
+                className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-colors hover:text-blue-400 ${pathname === link.href ? 'text-white' : 'text-gray-500'}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* --- CTA BUTTON (Desktop) --- */}
           <div className="hidden md:block">
             <a
-            onClick={() => {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-            href="#contact" className="your-button-styles px-6 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
+             onClick={() => {
+                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                 }}
+            className="px-6 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
               Hire Us <ArrowUpRight size={14} className="group-hover:rotate-45 transition-transform" />
             </a>
           </div>
-              
+
           {/* --- MOBILE HAMBURGER --- */}
           <button 
             className="md:hidden text-white p-2"

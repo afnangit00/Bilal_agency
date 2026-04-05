@@ -52,9 +52,12 @@ export default function Home() {
           </p>
           
           <div className="flex gap-4">
-            <Link href="#contact" className="group h-16 w-16 md:h-20 md:w-20 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <a
+             onClick={() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+            className="group h-16 w-16 md:h-20 md:w-20 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
               <ArrowUpRight size={32} className="group-hover:rotate-12 transition-transform" />
-            </Link>
+            </a>
             <div className="flex flex-col justify-center items-start">
                <span className="text-xs text-gray-500 uppercase tracking-widest">Start a project</span>
                <span className="text-lg font-bold">Get in touch</span>
