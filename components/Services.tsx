@@ -6,7 +6,7 @@ import Link from 'next/link';
 const services = [
   {
     id: "01",
-    title: "Personal Branding",
+    title: "Personal Branding.",
     subtitle: "For Creators & Influencers",
     icon: <User size={32} />,
     desc: "We build digital identities that command authority. Perfect for speakers, influencers, and thought leaders.",
