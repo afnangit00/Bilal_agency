@@ -9,7 +9,8 @@ const projects = [
     category: "Personal Brand",
     img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop",
     year: "2026",
-    layout: "col-span-2 md:col-span-1 h-[400px]"
+    layout: "col-span-2 md:col-span-1 h-[400px]",
+    link: "https://vivid-forge.vercel.app/"
   },
   {
     id: 2,
@@ -91,7 +92,9 @@ export default function Projects() {
                 <div>
                   <p className="text-blue-400 text-xs font-mono mb-2 uppercase tracking-widest">{project.category}</p>
                   <h3 className="text-2xl md:text-4xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-500">
-                    {project.title}
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
+                      {project.title}
+                    </a>
                   </h3>
                 </div>
               </div>
