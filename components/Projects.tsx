@@ -10,7 +10,7 @@ const projects = [
     img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop",
     year: "2026",
     layout: "col-span-2 md:col-span-1 h-[400px]",
-    link: "https://vivid-forge.vercel.app/"
+    link: "https://vivid-forge.vercel.app"
   },
   {
     id: 2,
