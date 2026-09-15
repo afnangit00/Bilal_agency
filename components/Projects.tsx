@@ -24,19 +24,21 @@ const projects = [
   
   {
     id: 3,
-    title: "Elite Barber Studio",
+    title: "PREMEUIME MOBILES & ACCESERIES",
     category: "Service Based",
-    img: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop",
-    year: "2026",
-    layout: "col-span-2 md:col-span-1 h-[500px]"
+    img: "https://media.istockphoto.com/id/877238326/photo/smart-male-customer-choosing-smartphone.webp?a=1&b=1&s=612x612&w=0&k=20&c=3MOdZy2Qs-suCjY0Wz8TMNbLtUOIXCuWSwVFqZQXFpM=",
+    year: "2025",
+    layout: "col-span-2 md:col-span-1 h-[500px]",
+    link: "https://mobile-tan-seven.vercel.app/"
   },
   {
     id: 4,
-    title: "Aurora Digital Agency",
-    category: "Corporate",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    title: "Dress Shops",
+    category: "sales",
+    img: "https://media.istockphoto.com/id/1175412224/photo/woman-buying-clothes-at-department-store-stock-photo.webp?a=1&b=1&s=612x612&w=0&k=20&c=F5SBcYUtlG4K8IEhGQ8op7CJxFcUS0NNABDjgRF70y8=",
     year: "2024",
-    layout: "col-span-2 md:col-span-1 h-[450px] md:-mt-10"
+    layout: "col-span-2 md:col-span-1 h-[450px] md:-mt-10",
+    link : "https://clothing-rouge-mu.vercel.app/"
   }
 ];
 
