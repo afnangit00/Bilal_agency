@@ -16,7 +16,7 @@ const projects = [
     id: 2,
     title: "Car selling platForm",
     category: "cars / Rending",
-    img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhciUyMHNhbGVzfGVufDB8fDB8fHww",
     year: "2025",
     layout: "col-span-2 md:col-span-1 h-[600px] md:-mt-20",
     link: "https://carweb-eight.vercel.app/" // Staggered Effect
